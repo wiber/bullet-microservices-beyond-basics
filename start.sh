@@ -32,4 +32,5 @@ cd logging
 meteor add meteorhacks:cluster &
 meteor --port 8001 --settings ../dev.json > ../logging.log &
 cd ..
+for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r &
 tail -f ./main.log
